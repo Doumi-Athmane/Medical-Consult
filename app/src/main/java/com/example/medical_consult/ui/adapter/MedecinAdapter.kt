@@ -10,6 +10,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.medical_consult.R
 import com.example.medical_consult.data.model.Medecin
 
@@ -28,7 +29,9 @@ class MedecinAdapter (val context: Context, var data:List<Medecin>) : RecyclerVi
         holder.adresse.text = data[position].city
         holder.spec.text = data[position].speciality
         holder.num.text = data[position].phone
-        //holder.image.setImageResource(data[position].imageUrl)
+       // Glide.with(context).load("http://192.168.43.191:3000/"+data[position].photo).into(holder.image)
+        Glide.with(context).load(data[position].imageUrl).into(holder.image)
+        //holder.image.setImageResource(data[position].imageUrl.toInt())
 
         holder.appler.setOnClickListener { view ->
 

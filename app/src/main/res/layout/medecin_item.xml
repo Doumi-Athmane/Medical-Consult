@@ -1,35 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <ImageView
         android:id="@+id/imageMedecin"
         android:layout_width="136dp"
         android:layout_height="147dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/num"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.162"
+        app:layout_constraintHorizontal_bias="0.058"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.089"
         tools:srcCompat="@tools:sample/avatars" />
 
-    <TextView
-        android:id="@+id/adresse"
+    <ImageView
+        android:id="@+id/map"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        android:textSize="17sp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageMedecin"
-        app:layout_constraintEnd_toEndOf="@+id/nomMedecin"
-        app:layout_constraintHorizontal_bias="0.4"
-        app:layout_constraintStart_toStartOf="@+id/nomMedecin"
-        app:layout_constraintTop_toTopOf="@+id/nomMedecin"
-        app:layout_constraintVertical_bias="0.425" />
+        app:layout_constraintBottom_toBottomOf="@+id/adresse"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.846"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nomMedecin"
+        app:layout_constraintVertical_bias="0.041"
+        app:srcCompat="@drawable/map" />
+
+    <TextView
+        android:id="@+id/Voir_map"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Voir sur map"
+        app:layout_constraintBottom_toTopOf="@+id/appler"
+        app:layout_constraintEnd_toEndOf="@+id/map"
+        app:layout_constraintHorizontal_bias="0.393"
+        app:layout_constraintStart_toStartOf="@+id/map"
+        app:layout_constraintTop_toTopOf="@+id/map"
+        app:layout_constraintVertical_bias="0.424" />
 
     <TextView
         android:id="@+id/num"
@@ -42,18 +52,30 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/specialté"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.269" />
+        app:layout_constraintVertical_bias="0.73" />
+
+    <ImageView
+        android:id="@+id/appler"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/num"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.11"
+        app:layout_constraintStart_toEndOf="@+id/num"
+        app:layout_constraintTop_toBottomOf="@+id/specialté"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/appler" />
 
     <TextView
         android:id="@+id/nomMedecin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="8dp"
         android:text="TextView"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.234"
+        app:layout_constraintHorizontal_bias="0.195"
         app:layout_constraintStart_toEndOf="@+id/imageMedecin"
         app:layout_constraintTop_toTopOf="@+id/imageMedecin" />
 
@@ -66,41 +88,22 @@
         android:textSize="17sp"
         app:layout_constraintBottom_toBottomOf="@+id/imageMedecin"
         app:layout_constraintEnd_toEndOf="@+id/nomMedecin"
-        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/nomMedecin"
         app:layout_constraintTop_toTopOf="@+id/imageMedecin"
         app:layout_constraintVertical_bias="0.814" />
 
-    <ImageView
-        android:id="@+id/appler"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/num"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.358"
-        app:layout_constraintStart_toEndOf="@+id/num"
-        app:layout_constraintTop_toBottomOf="@+id/specialté"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/appler" />
-
-    <ImageView
-        android:id="@+id/map"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/adresse"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/nomMedecin"
-        app:layout_constraintTop_toBottomOf="@+id/nomMedecin"
-        app:srcCompat="@drawable/map" />
-
     <TextView
-        android:id="@+id/Voir_map"
+        android:id="@+id/adresse"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Voir sur map"
-        app:layout_constraintBottom_toTopOf="@+id/appler"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/adresse"
-        app:layout_constraintTop_toTopOf="@+id/map" />
+        android:text="TextView"
+        android:textSize="17sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageMedecin"
+        app:layout_constraintEnd_toEndOf="@+id/nomMedecin"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/nomMedecin"
+        app:layout_constraintTop_toTopOf="@+id/nomMedecin"
+        app:layout_constraintVertical_bias="0.405" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
