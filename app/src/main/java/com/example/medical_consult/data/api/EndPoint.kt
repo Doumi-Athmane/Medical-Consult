@@ -4,7 +4,7 @@ import retrofit2.Call
 import com.example.medical_consult.data.model.*
 import retrofit2.http.*
 
-interface ServiceProvider {
+interface EndPoint {
     @POST("/conseil/add")
     fun postConseil(@Body conseil:Conseil): Call<Conseil>
 
