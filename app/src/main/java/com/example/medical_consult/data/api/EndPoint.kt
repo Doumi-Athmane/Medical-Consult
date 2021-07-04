@@ -13,4 +13,8 @@ interface EndPoint {
 
     @GET("/auth/medecins")
     fun getMedecins(): Call<List<Medecin>>
+
+
+    @POST("/auth/")
+    fun postLogin(@Body loginRequest: LoginRequest): Call<LoginResponse>
 }
