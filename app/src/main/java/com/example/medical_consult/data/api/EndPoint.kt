@@ -13,4 +13,7 @@ interface EndPoint {
 
     @GET("/auth/medecins")
     fun getMedecins(): Call<List<Medecin>>
+
+    @GET("/auth/medecins/{id}")
+    fun getMedecinByID(): Call<Medecin>
 }

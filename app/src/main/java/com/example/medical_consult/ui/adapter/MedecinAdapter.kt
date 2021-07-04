@@ -8,11 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.os.bundleOf
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.medical_consult.R
 import com.example.medical_consult.data.model.Medecin
+import com.example.medical_consult.ui.view.fragments.ProfilMedecin
 
 class MedecinAdapter (val context: Context, var data:List<Medecin>) : RecyclerView.Adapter<MyViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -25,12 +27,12 @@ class MedecinAdapter (val context: Context, var data:List<Medecin>) : RecyclerVi
     override fun getItemCount() = data.size
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.nom.text = data[position].fullName
+        holder.nom.text = "Dr "+data[position].fullName
         holder.adresse.text = data[position].city
         holder.spec.text = data[position].speciality
         holder.num.text = data[position].phone
-       // Glide.with(context).load("http://192.168.43.191:3000/"+data[position].photo).into(holder.image)
-        Glide.with(context).load(data[position].imageUrl).into(holder.image)
+        Glide.with(context).load("https://tdm-back.herokuapp.com/"+data[position].imageUrl).into(holder.image)
+        //Glide.with(context).load(data[position].imageUrl).into(holder.image)
         //holder.image.setImageResource(data[position].imageUrl.toInt())
 
         holder.appler.setOnClickListener { view ->
@@ -50,10 +52,15 @@ class MedecinAdapter (val context: Context, var data:List<Medecin>) : RecyclerVi
         }
 
         holder.itemView.setOnClickListener { view ->
-            /*val intent = Intent(context,MainActivity2::class.java)
+            /*val intent = Intent(context,ProfilMedecin::class.java)
             intent.putExtra("pr"
                 ,data[position])
             context.startActivity(intent)*/
+            val bundle = bundleOf("id" to data[position].id,"nom" to data[position].fullName , "addr" to data[position].city ,
+                "num" to data[position].phone
+            , "spec" to data[position].speciality , "image" to data[position].imageUrl)
+
+            view?.findNavController()?.navigate(R.id.action_listeMedecinsFragment_to_profilMedecin , bundle)
         }
 
 
