@@ -16,4 +16,10 @@ interface EndPoint {
 
     @GET("/auth/medecins/{id}")
     fun getMedecinByID(): Call<Medecin>
+
+    @POST("/rdv/add")
+    fun addRDV(@Body rdv: Rdv): Call<Rdv>
+
+    @POST("/rdv/pris/{id}")
+    fun getRdvByMed(@Body date: String): Call<List<Int>>
 }

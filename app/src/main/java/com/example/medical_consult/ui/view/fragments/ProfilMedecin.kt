@@ -51,7 +51,7 @@ class ProfilMedecin : Fragment() {
 
         rdv.setOnClickListener { view ->
 
-            val bundle = bundleOf("id" to arguments?.getString("id"),
+            val bundle = bundleOf("id" to arguments?.getInt("id"),
                 "nom" to arguments?.getString("nom") , "addr" to arguments?.getString("addr") ,
                 "num" to arguments?.getString("num")
                 , "spec" to arguments?.getString("spec") , "image" to arguments?.getString("image"))

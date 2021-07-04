@@ -1,5 +1,18 @@
 <resources>
     <string name="app_name">Medical-Consult</string>
     <!-- TODO: Remove or change this placeholder text -->
+    <string name="selected_item">Selected item:</string>
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="Phorraire">
+        <item>-----------</item>
+        <item>9h --> 10h</item>
+        <item>10h --> 11h</item>
+        <item>11h --> 12h</item>
+        <item>13h --> 14h</item>
+        <item>14h --> 15h</item>
+        <item>15h --> 16h</item>
+        <item>16h --> 17h</item>
+
+    </string-array>
 </resources>
