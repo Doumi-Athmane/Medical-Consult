@@ -7,21 +7,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.os.bundleOf
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.medical_consult.R
 import com.example.medical_consult.data.api.RetrofitService
-import com.example.medical_consult.data.model.Medecin
-import com.example.medical_consult.data.model.Patient
 import com.example.medical_consult.data.model.PlageHorraire
 import com.example.medical_consult.data.model.Rdv
-import com.example.medical_consult.ui.adapter.MedecinAdapter
 import com.example.medical_consult.ui.adapter.RdvAdapter
-import kotlinx.android.synthetic.main.fragment_liste_medecins.*
-import kotlinx.android.synthetic.main.fragment_liste_medecins.rView
 import kotlinx.android.synthetic.main.fragment_liste_rdv.*
-import kotlinx.android.synthetic.main.rdv_item.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -39,7 +31,7 @@ class ListeRdv : Fragment() {
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
-        rView1.layoutManager = LinearLayoutManager(requireActivity())
+        rView5.layoutManager = LinearLayoutManager(requireActivity())
         super.onActivityCreated(savedInstanceState)
         var preferences = this.activity?.getSharedPreferences("MedicalConsultContext", Context.MODE_PRIVATE)
         loadDataFromBDDRdv(preferences?.getInt("id",0)!!)
@@ -87,7 +79,7 @@ class ListeRdv : Fragment() {
 
                     if(data != null){
 
-                        rView1.adapter = RdvAdapter(requireActivity(),data)
+                        rView5.adapter = RdvAdapter(requireActivity(),data)
                     }
                 }else{
 

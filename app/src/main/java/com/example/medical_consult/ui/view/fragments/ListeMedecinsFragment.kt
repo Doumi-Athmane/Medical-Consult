@@ -36,6 +36,15 @@ class ListeMedecinsFragment : Fragment() {
             val bundle = bundleOf()
             view?.findNavController()?.navigate(R.id.action_listeMedecinsFragment_to_profilePatient, bundle)
         }
+        rdvv.setOnClickListener { view->
+            val bundle = bundleOf()
+            view?.findNavController()?.navigate(R.id.action_listeMedecinsFragment_to_listeRdv, bundle)
+        }
+
+        trt.setOnClickListener { view->
+            val bundle = bundleOf()
+            view?.findNavController()?.navigate(R.id.action_listeMedecinsFragment_to_listeTraitement, bundle)
+        }
     }
 
     private fun loadDataFromBDD(){

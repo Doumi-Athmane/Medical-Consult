@@ -3,8 +3,8 @@ package com.example.medical_consult.data.model
 import java.io.Serializable
 
 data class Conseil(
-        var id :Int,
-        var traitementId:Int,
+
+        var traitmentId:Int,
         var type:String,
         var description:String
 ):Serializable

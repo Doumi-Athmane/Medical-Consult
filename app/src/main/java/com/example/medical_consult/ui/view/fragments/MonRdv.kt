@@ -61,7 +61,6 @@ class MonRdv : Fragment() {
                     nomm.setText(data.fullName)
                     ad.setText(data.city)
                     speccc.setText(data.speciality)
-                    Toast.makeText(requireActivity(), ""+ data, Toast.LENGTH_LONG).show()
 
 
 

@@ -16,6 +16,12 @@
         <action
             android:id="@+id/action_listeMedecinsFragment_to_profilePatient"
             app:destination="@id/profilePatient" />
+        <action
+            android:id="@+id/action_listeMedecinsFragment_to_listeRdv"
+            app:destination="@id/listeRdv" />
+        <action
+            android:id="@+id/action_listeMedecinsFragment_to_listeTraitement"
+            app:destination="@id/listeTraitement" />
     </fragment>
     <fragment
         android:id="@+id/navBarFragment"
@@ -34,6 +40,9 @@
         <action
             android:id="@+id/action_profilMedecin_to_priseRdv"
             app:destination="@id/priseRdv" />
+        <action
+            android:id="@+id/action_profilMedecin_to_demandeConseil"
+            app:destination="@id/demandeConseil" />
     </fragment>
     <fragment
         android:id="@+id/priseRdv"
@@ -79,4 +88,14 @@
         android:name="com.example.medical_consult.ui.view.fragments.ProfilePatient"
         android:label="fragment_profile_patient"
         tools:layout="@layout/fragment_profile_patient" />
+    <fragment
+        android:id="@+id/demandeConseil"
+        android:name="com.example.medical_consult.ui.view.fragments.DemandeConseil"
+        android:label="fragment_demande_conseil"
+        tools:layout="@layout/fragment_demande_conseil" />
+    <fragment
+        android:id="@+id/listeTraitement"
+        android:name="com.example.medical_consult.ui.view.fragments.ListeTraitement"
+        android:label="fragment_liste_traitement"
+        tools:layout="@layout/fragment_liste_traitement" />
 </navigation>
