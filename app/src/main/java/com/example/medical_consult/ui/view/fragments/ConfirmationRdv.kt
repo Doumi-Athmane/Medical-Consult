@@ -9,7 +9,9 @@ import androidmads.library.qrgenearator.QRGContents
 import androidmads.library.qrgenearator.QRGEncoder
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.medical_consult.R
+import kotlinx.android.synthetic.main.fragment_confirmation_rdv.*
 import kotlinx.android.synthetic.main.fragment_liste_medecins.*
+import kotlinx.android.synthetic.main.fragment_profil_medecin.*
 
 class ConfirmationRdv : Fragment() {
 
@@ -24,6 +26,11 @@ class ConfirmationRdv : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
        // var qrgEncoder = QRGEncoder(inputValue, null, QRGContents.Type.TEXT, 1);
+        nommede.setText("Dr "+arguments?.getString("nom"))
+        addd.setText(arguments?.getString("addr"))
+        specc.setText(arguments?.getString("spec"))
+        date.setText(arguments?.getString("jour"))
+        horr.setText(arguments?.getString("hor"))
 
     }
 

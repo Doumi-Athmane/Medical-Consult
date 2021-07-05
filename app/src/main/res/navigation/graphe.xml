@@ -36,5 +36,14 @@
         android:id="@+id/priseRdv"
         android:name="com.example.medical_consult.ui.view.fragments.PriseRdv"
         android:label="fragment_prise_rdv"
-        tools:layout="@layout/fragment_prise_rdv" />
+        tools:layout="@layout/fragment_prise_rdv" >
+        <action
+            android:id="@+id/action_priseRdv_to_confirmationRdv"
+            app:destination="@id/confirmationRdv" />
+    </fragment>
+    <fragment
+        android:id="@+id/confirmationRdv"
+        android:name="com.example.medical_consult.ui.view.fragments.ConfirmationRdv"
+        android:label="fragment_confirmation_rdv"
+        tools:layout="@layout/fragment_confirmation_rdv" />
 </navigation>
