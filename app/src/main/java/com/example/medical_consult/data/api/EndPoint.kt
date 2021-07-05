@@ -29,7 +29,7 @@ interface EndPoint {
     @POST("/rdv/verif/{id}")
     fun verifRdv(@Path("id") id:Int?,@Body rdv:Rdv): Call<verifResponse>
     @DELETE("/rdv/{id}")
-    fun suppRDV(@Path("id") id:Int?)
+    fun suppRDV(@Path("id") id:Int?):Call<verifResponse>
     @GET("/auth/{id}")
     fun getPatientById(@Path("id") id:Int?): Call<User>
     @GET("/horraire/{id}")

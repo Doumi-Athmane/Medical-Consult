@@ -56,7 +56,7 @@
             app:layout_constraintTop_toBottomOf="@+id/EmailTextView" />
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/QRMonrdv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
@@ -73,7 +73,7 @@
             android:textColor="#333333"
             android:textSize="22sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+            app:layout_constraintTop_toBottomOf="@+id/QRMonrdv" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

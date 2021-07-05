@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rdvItemlayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -9,11 +10,12 @@
         android:id="@+id/nomMedec"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="124dp"
+        android:layout_marginTop="40dp"
         android:text="Rendez-vous"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.573"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -32,12 +34,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="TextView"
+        android:text="Date"
         android:textColor="#42BABA"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/nomMedec"
         app:layout_constraintTop_toBottomOf="@+id/nomMedec" />
 
     <ImageView
@@ -55,11 +58,20 @@
         android:id="@+id/horraire"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="TextView"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
+        android:text="Horraire"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/time"
-        app:layout_constraintHorizontal_bias="0.481"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/time"
         app:layout_constraintTop_toBottomOf="@+id/time" />
+
+    <ImageView
+        android:id="@+id/QRListitem"
+        android:layout_width="94dp"
+        android:layout_height="95dp"
+        android:layout_marginEnd="28dp"
+        app:layout_constraintEnd_toStartOf="@+id/nomMedec"
+        app:layout_constraintTop_toTopOf="@+id/nomMedec"
+        tools:srcCompat="@tools:sample/avatars" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,29 +9,29 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="100dp"
+        android:background="@color/white"
         android:paddingLeft="20sp"
+        android:paddingTop="10sp"
         android:paddingRight="20sp"
         android:paddingBottom="10sp"
-        android:paddingTop="10sp"
-        android:background="@color/white"
         app:layout_constraintBottom_toBottomOf="parent">
 
         <LinearLayout
             android:id="@+id/linearLayout2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-
             android:gravity="center"
+
+            android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
                 android:id="@+id/imageView3"
-                android:layout_width="40dp"
-                android:layout_height="50dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:src="@drawable/rdv" />
 
             <TextView
@@ -55,8 +55,8 @@
 
             <ImageView
                 android:id="@+id/ic_medecins"
-                android:layout_width="35dp"
-                android:layout_height="50dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:src="@drawable/medecins" />
 
             <TextView
@@ -79,8 +79,8 @@
 
             <ImageView
                 android:id="@+id/ic_traitement"
-                android:layout_width="40dp"
-                android:layout_height="50dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:src="@drawable/traitement" />
 
             <TextView
