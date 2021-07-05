@@ -97,5 +97,18 @@
         android:id="@+id/listeTraitement"
         android:name="com.example.medical_consult.ui.view.fragments.ListeTraitement"
         android:label="Liste des Traitement"
-        tools:layout="@layout/fragment_liste_traitement" />
+        tools:layout="@layout/fragment_liste_traitement" >
+        <action
+            android:id="@+id/action_listeTraitement_to_monTraitement"
+            app:destination="@id/monTraitement" />
+    </fragment>
+    <fragment
+        android:id="@+id/monTraitement"
+        android:name="com.example.medical_consult.ui.view.fragments.monTraitement"
+        android:label="fragment_mon_traitement"
+        tools:layout="@layout/fragment_mon_traitement" >
+        <action
+            android:id="@+id/action_monTraitement_to_demandeConseil"
+            app:destination="@id/demandeConseil" />
+    </fragment>
 </navigation>

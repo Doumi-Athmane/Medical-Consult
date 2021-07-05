@@ -31,14 +31,15 @@ class TraitementAdapter (val context: Context, var data:List<Traitement1>) : Rec
 
     override fun onBindViewHolder(holder: MyViewHolder2, position: Int) {
         holder.date.text = "Le "+data[position].date
-        holder.desc.text = "Desc "+data[position].description
+        holder.desc.text = "Description : "+data[position].description
         holder.nom.text = "Dr "+data[position].medecinNom
 
 
         holder.vplus.setOnClickListener {view ->
-            val bundle = bundleOf("id" to data[position].id,"idrdv" to data[position].rdvId , "des" to data[position].description)
+            val bundle = bundleOf("id" to data[position].medecinId,"nom" to data[position].medecinNom,"add" to data[position].medecinCity ,
+                    "spec" to data[position].medecinSpeciality,"date" to data[position].date,"desc" to data[position].description)
 
-            view?.findNavController()?.navigate(R.id.action_listeMedecinsFragment_to_profilMedecin , bundle)
+            view?.findNavController()?.navigate(R.id.action_listeTraitement_to_monTraitement , bundle)
         }
 
 
