@@ -63,8 +63,7 @@ class MonRdv : Fragment() {
         call.enqueue(object : Callback<verifResponse> {
             override fun onResponse(call: Call<verifResponse>?, response: Response<verifResponse>?) {
                 if (response?.isSuccessful!!) {
-                    val bundle = bundleOf()
-                    view?.findNavController()?.navigate(R.id.action_monRdv_to_listeRdv, bundle)
+                    view?.findNavController()?.popBackStack()
                 } else {
                     Toast.makeText(
                             requireActivity(),
