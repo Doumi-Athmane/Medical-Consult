@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/rdvverifgraph"
+    app:startDestination="@id/QRscanner">
+
+    <fragment
+        android:id="@+id/QRscanner"
+        android:name="com.example.medical_consult.ui.view.fragments.QRscanner"
+        android:label="QRscanner" >
+        <action
+            android:id="@+id/action_QRscanner_to_rdvVerif"
+            app:destination="@id/rdvVerif" />
+    </fragment>
+    <fragment
+        android:id="@+id/rdvVerif"
+        android:name="com.example.medical_consult.ui.view.fragments.RdvVerif"
+        android:label="RdvVerif" />
+</navigation>

@@ -14,6 +14,18 @@ interface EndPoint {
     @GET("/auth/medecins")
     fun getMedecins(): Call<List<Medecin>>
 
+    @POST("/auth/")
+    fun postLogin(@Body loginRequest: LoginRequest): Call<LoginResponse>
+
+    @POST("/rdv/verif/{id}")
+    fun verifRdv(@Path("id") id:Int?,@Body rdv:Rdv): Call<verifResponse>
+
+    @GET("/horraire/{id}")
+    fun getPlageHorraire(@Path("id") id:Int?): Call<PlageHorraire>
+
+    @GET("/auth/patient/{id}")
+    fun getPatient(@Path("id") id:Int?): Call<Patient>
+
     @GET("/auth/medecins/{id}")
     fun getMedecinByID(): Call<Medecin>
 

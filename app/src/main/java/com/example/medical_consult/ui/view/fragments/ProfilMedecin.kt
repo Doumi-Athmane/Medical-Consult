@@ -32,7 +32,7 @@ class ProfilMedecin : Fragment() {
         return inflater.inflate(R.layout.fragment_profil_medecin, container, false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         nom.setText("Dr "+arguments?.getString("nom"))
         addr.setText(arguments?.getString("addr"))
