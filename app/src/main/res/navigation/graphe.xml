@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/listeMedecinsFragment"
         android:name="com.example.medical_consult.ui.view.fragments.ListeMedecinsFragment"
-        android:label="fragment_liste_medecins"
+        android:label="Liste Des medecins"
         tools:layout="@layout/fragment_liste_medecins" >
         <action
             android:id="@+id/action_listeMedecinsFragment_to_profilMedecin"
@@ -35,7 +35,7 @@
     <fragment
         android:id="@+id/profilMedecin"
         android:name="com.example.medical_consult.ui.view.fragments.ProfilMedecin"
-        android:label="fragment_profil_medecin"
+        android:label="Profil du medecin"
         tools:layout="@layout/fragment_profil_medecin" >
         <action
             android:id="@+id/action_profilMedecin_to_priseRdv"
@@ -47,7 +47,7 @@
     <fragment
         android:id="@+id/priseRdv"
         android:name="com.example.medical_consult.ui.view.fragments.PriseRdv"
-        android:label="fragment_prise_rdv"
+        android:label="Prise de Rendez-vous"
         tools:layout="@layout/fragment_prise_rdv" >
         <action
             android:id="@+id/action_priseRdv_to_confirmationRdv"
@@ -56,7 +56,7 @@
     <fragment
         android:id="@+id/confirmationRdv"
         android:name="com.example.medical_consult.ui.view.fragments.ConfirmationRdv"
-        android:label="fragment_confirmation_rdv"
+        android:label="Comfirmation de Rendez-vous"
         tools:layout="@layout/fragment_confirmation_rdv" >
         <action
             android:id="@+id/action_confirmationRdv_to_listeMedecinsFragment"
@@ -68,7 +68,7 @@
     <fragment
         android:id="@+id/listeRdv"
         android:name="com.example.medical_consult.ui.view.fragments.ListeRdv"
-        android:label="fragment_liste_rdv"
+        android:label="Liste des Rendez-vous"
         tools:layout="@layout/fragment_liste_rdv" >
         <action
             android:id="@+id/action_listeRdv_to_monRdv"
@@ -77,7 +77,7 @@
     <fragment
         android:id="@+id/monRdv"
         android:name="com.example.medical_consult.ui.view.fragments.MonRdv"
-        android:label="fragment_mon_rdv"
+        android:label="Mon Rendez-vous"
         tools:layout="@layout/fragment_mon_rdv" >
         <action
             android:id="@+id/action_monRdv_to_listeRdv"
@@ -86,16 +86,16 @@
     <fragment
         android:id="@+id/profilePatient"
         android:name="com.example.medical_consult.ui.view.fragments.ProfilePatient"
-        android:label="fragment_profile_patient"
+        android:label="Mon Profil"
         tools:layout="@layout/fragment_profile_patient" />
     <fragment
         android:id="@+id/demandeConseil"
         android:name="com.example.medical_consult.ui.view.fragments.DemandeConseil"
-        android:label="fragment_demande_conseil"
+        android:label="Demande De conseil"
         tools:layout="@layout/fragment_demande_conseil" />
     <fragment
         android:id="@+id/listeTraitement"
         android:name="com.example.medical_consult.ui.view.fragments.ListeTraitement"
-        android:label="fragment_liste_traitement"
+        android:label="Liste des Traitement"
         tools:layout="@layout/fragment_liste_traitement" />
 </navigation>

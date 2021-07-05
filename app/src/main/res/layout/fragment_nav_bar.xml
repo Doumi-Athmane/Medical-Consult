@@ -7,70 +7,89 @@
     tools:context=".ui.view.fragments.NavBarFragment"
     android:id="@+id/frameLayout" >
 
-    <ImageView
-        android:id="@+id/ic_traitement"
-        android:layout_width="60dp"
-        android:layout_height="50dp"
-        android:layout_marginEnd="40dp"
-        android:src="@drawable/traitement"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView3"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <ImageView
-        android:id="@+id/ic_medecins"
-        android:layout_width="60dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="600dp"
-        android:layout_marginBottom="39dp"
-        android:src="@drawable/medecins"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/imageView3"
-        app:layout_constraintHorizontal_bias="0.352"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="60dp"
-        android:layout_height="50dp"
-        android:src="@drawable/rdv"
-        app:layout_constraintBottom_toBottomOf="@+id/ic_medecins"
-        app:layout_constraintEnd_toStartOf="@+id/ic_traitement"
-        app:layout_constraintHorizontal_bias="0.713"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/ic_medecins"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/TMedecins"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Medecins"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/ic_medecins"
-        app:layout_constraintStart_toStartOf="@+id/ic_medecins"
-        app:layout_constraintTop_toBottomOf="@+id/ic_medecins" />
+        android:paddingLeft="20sp"
+        android:paddingRight="20sp"
+        android:paddingBottom="10sp"
+        android:paddingTop="10sp"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent">
 
-    <TextView
-        android:id="@+id/TTraitement"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Traitements"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/ic_traitement"
-        app:layout_constraintStart_toStartOf="@+id/ic_traitement"
-        app:layout_constraintTop_toBottomOf="@+id/ic_traitement" />
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
 
-    <TextView
-        android:id="@+id/TRDV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Rendez-vous"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/imageView3"
-        app:layout_constraintStart_toStartOf="@+id/imageView3"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="40dp"
+                android:layout_height="50dp"
+                android:src="@drawable/rdv" />
+
+            <TextView
+                android:id="@+id/TRDV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rendez-vous" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/linearLayout"
+            app:layout_constraintStart_toEndOf="@+id/linearLayout2"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/ic_medecins"
+                android:layout_width="35dp"
+                android:layout_height="50dp"
+                android:src="@drawable/medecins" />
+
+            <TextView
+                android:id="@+id/TMedecins"
+                android:layout_width="wrap_content"
+                android:layout_height="19dp"
+                android:text="Medecins" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/ic_traitement"
+                android:layout_width="40dp"
+                android:layout_height="50dp"
+                android:src="@drawable/traitement" />
+
+            <TextView
+                android:id="@+id/TTraitement"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Traitements" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

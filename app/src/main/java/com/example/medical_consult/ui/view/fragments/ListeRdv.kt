@@ -34,7 +34,7 @@ class ListeRdv : Fragment() {
         rView5.layoutManager = LinearLayoutManager(requireActivity())
         super.onActivityCreated(savedInstanceState)
         var preferences = this.activity?.getSharedPreferences("MedicalConsultContext", Context.MODE_PRIVATE)
-        loadDataFromBDDRdv(preferences?.getInt("id",0)!!)
+        loadDataFromBDDRdv(preferences?.getInt("patientId",0)!!)
 
 
 

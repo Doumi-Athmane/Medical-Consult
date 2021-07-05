@@ -86,8 +86,10 @@ class PriseRdv : Fragment() {
             val id = arguments?.getInt("id")!!
             val selectedDate:Long = jour.date
             calendar.timeInMillis = selectedDate
-            val dateFormatter = DateFormat.getDateInstance(DateFormat.MEDIUM)
+            val dateFormatter = DateFormat.getDateInstance(DateFormat.SHORT)
             var date = dateFormatter.format(calendar.time)
+
+
             if (hor != 0) {
                 var rdv = Rdv(hor, id, preferences?.getInt("patientId",0)!!, "confirmed", date)
                 addRDV(rdv,date,plagehor)

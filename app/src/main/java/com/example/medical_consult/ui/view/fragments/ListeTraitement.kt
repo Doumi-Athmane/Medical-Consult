@@ -31,7 +31,7 @@ class ListeTraitement : Fragment() {
         rView5.layoutManager = LinearLayoutManager(requireActivity())
         super.onActivityCreated(savedInstanceState)
         var preferences = this.activity?.getSharedPreferences("MedicalConsultContext", Context.MODE_PRIVATE)
-        loadDataFromBDD((preferences?.getInt("id",0)!!))
+        loadDataFromBDD((preferences?.getInt("patientId",0)!!))
     }
 
     private fun loadDataFromBDD(idr:Int){
