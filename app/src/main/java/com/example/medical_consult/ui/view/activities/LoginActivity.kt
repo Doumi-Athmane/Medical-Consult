@@ -40,24 +40,33 @@ class LoginActivity : AppCompatActivity() {
                 override fun onResponse(call: Call<LoginResponse>?, response:Response<LoginResponse>?) {
                     if (response?.isSuccessful!!) {
                         val data: LoginResponse? = response.body()
-                        if (data != null ) {
-                            getContext().edit {
-                                putBoolean("connected",true)
-                                putInt("id",data.id)
-                                putString("token",data.token)
-                                putString("type",data.type)
+                        if (data != null && data?.type != null) {
+                            try{
+                                getContext().edit {
+                                    putBoolean("connected",true)
+                                    putInt("id",data.id)
+                                    putString("token",data.token)
+                                    putString("type",data.type)
+                                }
+                                switchToActivity();
+                            }catch (e:Exception){triggerErrorLogin()
                             }
-                            switchToActivity();
-                        }
-                    } else {
-                        Toast.makeText(this@LoginActivity, "Les entrees sont incorrectes", Toast.LENGTH_LONG).show()
+                        } else triggerErrorLogin()
                     }
                 }
-                override fun onFailure(call: Call<LoginResponse>?, t: Throwable?) {
-                    Toast.makeText(this@LoginActivity,"L'utilisateur n'existe pas", Toast.LENGTH_SHORT).show()
+                override fun onFailure(call: Call<LoginResponse>?, t: Throwable?) {triggerErrorLogin()
                 }
             })
     }
+
+    fun triggerErrorLogin(){
+        Toast.makeText(this@LoginActivity, "Les entrees sont incorrectes", Toast.LENGTH_LONG).show()
+        EmailTextView.clearFocus()
+        PasswordTextView.clearFocus()
+        EmailTextView.setText("")
+        PasswordTextView.setText("")
+    }
+
     fun getContext():SharedPreferences{
         return getSharedPreferences("MedicalConsultContext", Context.MODE_PRIVATE)
     }
