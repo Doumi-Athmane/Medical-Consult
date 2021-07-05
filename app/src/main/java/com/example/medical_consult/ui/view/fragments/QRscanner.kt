@@ -17,6 +17,7 @@ import com.example.medical_consult.R
 import com.example.medical_consult.data.api.RetrofitService
 import com.example.medical_consult.data.model.*
 import kotlinx.android.synthetic.main.fragment_profil_medecin.*
+import kotlinx.android.synthetic.main.rdv_verif.*
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.Callback
@@ -68,9 +69,12 @@ class QRscanner : Fragment() {
 
     fun VerifRdv(rawQR:List<String>,view: View){
         var id = parseInt(rawQR[0])
-        var potentialRdv = Rdv(id,parseInt(rawQR[1]), parseInt(rawQR[2]),
-            rawQR[3],rawQR[4])
-        var plage =  getPlageHorraire(parseInt(rawQR[1]))
+
+        var potentialRdv = Rdv(parseInt(rawQR[1]), parseInt(rawQR[2]),
+            parseInt(rawQR[3]),rawQR[4],rawQR[5])
+        var plage =  parseInt(rawQR[1])
+        var patientname = parseInt(rawQR[3])
+        val bundle = bundleOf("plageHorraireId" to plage,"medecinId" to rawQR[2],"patientId" to patientname,"state" to rawQR[4],"date" to rawQR[5] )
         //apicall
         var call = RetrofitService.endpoint.verifRdv(id,potentialRdv)
         call.enqueue( object : Callback<verifResponse> {
@@ -79,8 +83,7 @@ class QRscanner : Fragment() {
                     val data: verifResponse? = response.body()
                     if (data != null ) {
                         if(data.result){
-                            val bundle = bundleOf("plageHorraireId" to plage,"medecinId" to rawQR[2],"patientId" to getNomPatient(
-                                parseInt(rawQR[3])),"state" to rawQR[4],"date" to rawQR[5] )
+                            val bundle = bundleOf("plageHorraireId" to plage,"medecinId" to rawQR[2],"patientId" to patientname,"state" to rawQR[4],"date" to rawQR[5] )
                             view.findNavController().navigate(R.id.action_QRscanner_to_rdvVerif , bundle)
                         }
                         else{
@@ -97,57 +100,6 @@ class QRscanner : Fragment() {
         })
     }
 
-
-    fun getPlageHorraire(id:Int):String {
-        var call = RetrofitService.endpoint.getPlageHorraire(id)
-        var ret = ""
-        try {
-            call.enqueue( object : Callback<PlageHorraire> {
-                override fun onResponse(call: Call<PlageHorraire>?, response: Response<PlageHorraire>?) {
-                    if (response?.isSuccessful!!) {
-                        val data: PlageHorraire? = response.body()
-                        if (data != null ) {
-                            ret =  "${data.heureDebut}H - ${data.heureFin}H"
-                            Toast.makeText(activity, ret, Toast.LENGTH_LONG).show()
-                        }
-                    } else {
-                        Toast.makeText(activity, "Les entrees sont incorrectes", Toast.LENGTH_LONG).show()
-                    }
-                }
-                override fun onFailure(call: Call<PlageHorraire>?, t: Throwable?) {
-                    Toast.makeText(activity,"plage horraire n'existant pas", Toast.LENGTH_SHORT).show()
-                }
-            })
-        }catch (e:Exception){
-            Toast.makeText(activity,"plage horraire n'existant pas", Toast.LENGTH_SHORT).show()
-        }
-        return ret
-    }
-
-    fun getNomPatient(id:Int):String {
-        var call = RetrofitService.endpoint.getPatient(id)
-        var ret = ""
-        try {
-            call.enqueue( object : Callback<Patient> {
-                override fun onResponse(call: Call<Patient>?, response: Response<Patient>?) {
-                    if (response?.isSuccessful!!) {
-                        val data: Patient? = response.body()
-                        if (data != null ) {
-                            ret = data.fullName
-                        }
-                    } else {
-                        Toast.makeText(activity, "Les entrees sont incorrectes", Toast.LENGTH_LONG).show()
-                    }
-                }
-                override fun onFailure(call: Call<Patient>?, t: Throwable?) {
-                    Toast.makeText(activity,"plage horraire n'existant pas", Toast.LENGTH_SHORT).show()
-                }
-            })
-        }catch (e:Exception){
-            Toast.makeText(activity,"plage horraire n'existant pas", Toast.LENGTH_SHORT).show()
-        }
-        return ret
-    }
 
     override fun onResume() {
         super.onResume()

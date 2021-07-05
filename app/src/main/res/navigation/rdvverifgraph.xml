@@ -6,7 +6,7 @@
     <fragment
         android:id="@+id/QRscanner"
         android:name="com.example.medical_consult.ui.view.fragments.QRscanner"
-        android:label="QRscanner" >
+        android:label="Scanner QR code" >
         <action
             android:id="@+id/action_QRscanner_to_rdvVerif"
             app:destination="@id/rdvVerif" />
@@ -14,5 +14,5 @@
     <fragment
         android:id="@+id/rdvVerif"
         android:name="com.example.medical_consult.ui.view.fragments.RdvVerif"
-        android:label="RdvVerif" />
+        android:label="Verification du Rendez-vous" />
 </navigation>
