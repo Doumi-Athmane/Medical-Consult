@@ -8,5 +8,6 @@ data class Rdv (
         var medecinId:Int,
         var patientId:Int,
         var state:String,
-        var date:String
+        var date:String,
+        val id: Int? = null
         ):Serializable
