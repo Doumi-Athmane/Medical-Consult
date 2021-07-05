@@ -6,5 +6,8 @@ data class User (
         var id :Int,
         var email: String,
         var password:String,
-        var type:String
+        var type:String,
+        var userId:Int,
+        var fullName: String,
+        var phone : String
         ):Serializable

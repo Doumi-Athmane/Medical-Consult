@@ -69,7 +69,7 @@ class QRscanner : Fragment() {
     fun VerifRdv(rawQR:List<String>,view: View){
         var id = parseInt(rawQR[0])
         var potentialRdv = Rdv(id,parseInt(rawQR[1]), parseInt(rawQR[2]),
-            parseInt(rawQR[3]),rawQR[4],rawQR[5])
+            rawQR[3],rawQR[4])
         var plage =  getPlageHorraire(parseInt(rawQR[1]))
         //apicall
         var call = RetrofitService.endpoint.verifRdv(id,potentialRdv)

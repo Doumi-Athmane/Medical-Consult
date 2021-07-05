@@ -7,11 +7,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidmads.library.qrgenearator.QRGContents
 import androidmads.library.qrgenearator.QRGEncoder
+import androidx.core.os.bundleOf
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.medical_consult.R
+import com.example.medical_consult.data.model.Rdv
 import kotlinx.android.synthetic.main.fragment_confirmation_rdv.*
 import kotlinx.android.synthetic.main.fragment_liste_medecins.*
+import kotlinx.android.synthetic.main.fragment_prise_rdv.*
 import kotlinx.android.synthetic.main.fragment_profil_medecin.*
+import java.text.DateFormat
 
 class ConfirmationRdv : Fragment() {
 
@@ -31,6 +36,18 @@ class ConfirmationRdv : Fragment() {
         specc.setText(arguments?.getString("spec"))
         date.setText(arguments?.getString("jour"))
         horr.setText(arguments?.getString("hor"))
+
+        acc.setOnClickListener { view ->
+
+            val bundle = bundleOf()
+            view?.findNavController()?.navigate(R.id.action_confirmationRdv_to_listeMedecinsFragment, bundle)
+
+        }
+        voirRDV.setOnClickListener { view->
+            val bundle = bundleOf()
+            view?.findNavController()?.navigate(R.id.action_confirmationRdv_to_listeRdv, bundle)
+
+        }
 
     }
 
