@@ -59,6 +59,14 @@ class ProfilMedecin : Fragment() {
             view?.findNavController()?.navigate(R.id.action_profilMedecin_to_priseRdv , bundle)
 
         }
+
+            Direction.setOnClickListener { view ->
+
+                val bundle = bundleOf("idMed" to arguments?.getInt("id"))
+
+                view?.findNavController()?.navigate(R.id.action_profilMedecin_to_demandeConseil , bundle)
+
+            }
     }
 
 

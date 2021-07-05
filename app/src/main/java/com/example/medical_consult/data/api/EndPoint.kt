@@ -6,12 +6,18 @@ import retrofit2.http.*
 
 interface EndPoint {
     @POST("/conseil/add")
-    fun postConseil(@Body conseil:Conseil): Call<Conseil>
+    fun postConseil(@Body conseil:Conseil): Call<Conseil1>
 
     @GET("/conseil/{id}")
     fun getConseilByTraitement(@Path("id") id:Int?): Call<List<Conseil>>
     @GET("/rdv/patient/{id}")
     fun getRdvByPatient(@Path("id") id:Int?): Call<List<Rdv>>
+
+    @GET("/auth/traitements")
+    fun getTraiements(): Call<List<Traitement>>
+
+    @GET("/traitment/patient/{id}")
+    fun getTraiementByPatient(@Path("id") id:Int?): Call<List<Traitement1>>
 
     @GET("/auth/medecins")
     fun getMedecins(): Call<List<Medecin>>
