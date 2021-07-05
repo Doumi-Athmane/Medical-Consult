@@ -69,6 +69,7 @@ class QRscanner : Fragment() {
 
     fun VerifRdv(rawQR:List<String>,view: View){
         var id = parseInt(rawQR[0])
+
         var potentialRdv = Rdv(parseInt(rawQR[1]), parseInt(rawQR[2]),
             parseInt(rawQR[3]),rawQR[4],rawQR[5])
         var plage =  parseInt(rawQR[1])

@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_listeMedecinsFragment_to_profilMedecin"
             app:destination="@id/profilMedecin" />
+        <action
+            android:id="@+id/action_listeMedecinsFragment_to_profilePatient"
+            app:destination="@id/profilePatient" />
     </fragment>
     <fragment
         android:id="@+id/navBarFragment"
@@ -45,5 +48,35 @@
         android:id="@+id/confirmationRdv"
         android:name="com.example.medical_consult.ui.view.fragments.ConfirmationRdv"
         android:label="fragment_confirmation_rdv"
-        tools:layout="@layout/fragment_confirmation_rdv" />
+        tools:layout="@layout/fragment_confirmation_rdv" >
+        <action
+            android:id="@+id/action_confirmationRdv_to_listeMedecinsFragment"
+            app:destination="@id/listeMedecinsFragment" />
+        <action
+            android:id="@+id/action_confirmationRdv_to_listeRdv"
+            app:destination="@id/listeRdv" />
+    </fragment>
+    <fragment
+        android:id="@+id/listeRdv"
+        android:name="com.example.medical_consult.ui.view.fragments.ListeRdv"
+        android:label="fragment_liste_rdv"
+        tools:layout="@layout/fragment_liste_rdv" >
+        <action
+            android:id="@+id/action_listeRdv_to_monRdv"
+            app:destination="@id/monRdv" />
+    </fragment>
+    <fragment
+        android:id="@+id/monRdv"
+        android:name="com.example.medical_consult.ui.view.fragments.MonRdv"
+        android:label="fragment_mon_rdv"
+        tools:layout="@layout/fragment_mon_rdv" >
+        <action
+            android:id="@+id/action_monRdv_to_listeRdv"
+            app:destination="@id/listeRdv" />
+    </fragment>
+    <fragment
+        android:id="@+id/profilePatient"
+        android:name="com.example.medical_consult.ui.view.fragments.ProfilePatient"
+        android:label="fragment_profile_patient"
+        tools:layout="@layout/fragment_profile_patient" />
 </navigation>

@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.os.bundleOf
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.medical_consult.R
 import com.example.medical_consult.data.api.RetrofitService
@@ -29,6 +31,11 @@ class ListeMedecinsFragment : Fragment() {
         rView.layoutManager = LinearLayoutManager(requireActivity())
         super.onActivityCreated(savedInstanceState)
         loadDataFromBDD()
+
+        Profile.setOnClickListener { view->
+            val bundle = bundleOf()
+            view?.findNavController()?.navigate(R.id.action_listeMedecinsFragment_to_profilePatient, bundle)
+        }
     }
 
     private fun loadDataFromBDD(){

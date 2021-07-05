@@ -1,6 +1,6 @@
 package com.example.medical_consult.ui.view.fragments
 
-import android.icu.text.SimpleDateFormat
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -19,6 +19,7 @@ import kotlinx.android.synthetic.main.fragment_prise_rdv.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.text.DateFormat
 import java.util.*
 
 
@@ -26,8 +27,8 @@ class PriseRdv : Fragment() {
 
 
     override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_prise_rdv, container, false)
@@ -39,15 +40,17 @@ class PriseRdv : Fragment() {
         var hor = 0
         var plagehor = ""
         val adapter = ArrayAdapter(
-                requireActivity(),
-                android.R.layout.simple_spinner_item, plages
+            requireActivity(),
+            android.R.layout.simple_spinner_item, plages
         )
 
         spinner.adapter = adapter
         spinner.onItemSelectedListener = object :
             AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>,
-                                        view: View, position: Int, id: Long) {
+            override fun onItemSelected(
+                parent: AdapterView<*>,
+                view: View, position: Int, id: Long
+            ) {
 
                 hor = position
                 plagehor = plages[position]
@@ -62,6 +65,17 @@ class PriseRdv : Fragment() {
         adrs.setText(arguments?.getString("addr"))
         special.setText(arguments?.getString("spec"))
 
+        val calendar = Calendar.getInstance()
+
+        jour.setOnDateChangeListener { view, year, month, dayOfMonth ->
+            calendar.set(year, month, dayOfMonth)
+
+            jour.date = calendar.timeInMillis
+
+
+
+        }
+        var preferences = this.activity?.getSharedPreferences("MedicalConsultContext", Context.MODE_PRIVATE)
 
 
 
@@ -70,18 +84,25 @@ class PriseRdv : Fragment() {
         prendreRDV.setOnClickListener { view ->
 
             val id = arguments?.getInt("id")!!
-            val sdf = SimpleDateFormat("yyyy-MM-dd")
-            val date: String = sdf.format(Date(jour.date))
-            //Toast.makeText(requireActivity(), date, Toast.LENGTH_LONG).show()
-            var rdv = Rdv(hor, id, 10, "confirmed", date)
+            val selectedDate:Long = jour.date
+            calendar.timeInMillis = selectedDate
+            val dateFormatter = DateFormat.getDateInstance(DateFormat.MEDIUM)
+            var date = dateFormatter.format(calendar.time)
+
+            var rdv = Rdv(hor, id, preferences?.getInt("id",0)!!, "confirmed", date)
             addRDV(rdv)
 
-            val bundle = bundleOf("id" to arguments?.getInt("id"),
-                    "nom" to arguments?.getString("nom") , "addr" to arguments?.getString("addr") ,
-                    "num" to arguments?.getString("num")
-                    , "spec" to arguments?.getString("spec") , "jour" to date , "hor" to plagehor)
+            val bundle = bundleOf(
+                "id" to arguments?.getInt("id"),
+                "nom" to arguments?.getString("nom"),
+                "addr" to arguments?.getString("addr"),
+                "num" to arguments?.getString("num"),
+                "spec" to arguments?.getString("spec"),
+                "jour" to date,
+                "hor" to plagehor
+            )
 
-            view?.findNavController()?.navigate(R.id.action_priseRdv_to_confirmationRdv , bundle)
+            view?.findNavController()?.navigate(R.id.action_priseRdv_to_confirmationRdv, bundle)
 
         }
     }
@@ -89,19 +110,19 @@ class PriseRdv : Fragment() {
         val call = RetrofitService.endpoint.addRDV(rdv)
         call.enqueue(object : Callback<Rdv> {
             override fun onResponse(
-                    call: Call<Rdv>?, response:
-                    Response<Rdv>?
+                call: Call<Rdv>?, response:
+                Response<Rdv>?
             ) {
                 if (response?.isSuccessful!!) {
                     val data = response.body()
 
 
-                    Toast.makeText(requireActivity(), "Création réussite", Toast.LENGTH_LONG).show()
+                    //Toast.makeText(requireActivity(), "Création réussite", Toast.LENGTH_LONG).show()
                 } else {
                     Toast.makeText(
-                            requireActivity(),
-                            "Erreur lors de la création",
-                            Toast.LENGTH_LONG
+                        requireActivity(),
+                        "Erreur lors de la création",
+                        Toast.LENGTH_LONG
                     ).show()
                 }
 
