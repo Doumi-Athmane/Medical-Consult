@@ -1,23 +1,17 @@
 package com.example.medical_consult.ui.view.fragments
 
-import android.content.pm.PackageManager
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
-import androidx.core.content.edit
 import androidx.core.os.bundleOf
 import androidx.navigation.findNavController
 import com.budiyev.android.codescanner.*
 import com.example.medical_consult.R
 import com.example.medical_consult.data.api.RetrofitService
 import com.example.medical_consult.data.model.*
-import kotlinx.android.synthetic.main.fragment_profil_medecin.*
-import kotlinx.android.synthetic.main.rdv_verif.*
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.Callback
@@ -56,8 +50,7 @@ class QRscanner : Fragment() {
         }
         codeScanner.errorCallback = ErrorCallback { // or ErrorCallback.SUPPRESS
             activity.runOnUiThread {
-                Toast.makeText(activity, "Camera initialization error: ${it.message}",
-                    Toast.LENGTH_LONG).show()
+                //Toast.makeText(activity, "Camera initialization error: ${it.message}",Toast.LENGTH_LONG).show()
             }
         }
 

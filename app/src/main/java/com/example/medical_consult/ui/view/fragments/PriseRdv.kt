@@ -1,9 +1,8 @@
 package com.example.medical_consult.ui.view.fragments
 
 import android.content.Context
-import android.graphics.Bitmap
-import android.graphics.Color
 import android.os.Bundle
+import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,11 +15,6 @@ import androidx.navigation.findNavController
 import com.example.medical_consult.R
 import com.example.medical_consult.data.api.RetrofitService
 import com.example.medical_consult.data.model.Rdv
-import com.google.zxing.BarcodeFormat
-import com.google.zxing.EncodeHintType
-import com.google.zxing.qrcode.QRCodeWriter
-import kotlinx.android.synthetic.main.fragment_liste_medecins.*
-import kotlinx.android.synthetic.main.fragment_mon_rdv.*
 import kotlinx.android.synthetic.main.fragment_prise_rdv.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -62,6 +56,8 @@ class PriseRdv : Fragment() {
 
                 hor = position
                 plagehor = plages[position]
+
+
             }
 
 
@@ -85,10 +81,6 @@ class PriseRdv : Fragment() {
         }
         var preferences = this.activity?.getSharedPreferences("MedicalConsultContext", Context.MODE_PRIVATE)
 
-
-
-
-
         prendreRDV.setOnClickListener { view ->
 
             val id = arguments?.getInt("id")!!
@@ -96,25 +88,17 @@ class PriseRdv : Fragment() {
             calendar.timeInMillis = selectedDate
             val dateFormatter = DateFormat.getDateInstance(DateFormat.MEDIUM)
             var date = dateFormatter.format(calendar.time)
-
-            var rdv = Rdv(hor, id, preferences?.getInt("id",0)!!, "confirmed", date)
-            addRDV(rdv)
-
-            val bundle = bundleOf(
-                "id" to arguments?.getInt("id"),
-                "nom" to arguments?.getString("nom"),
-                "addr" to arguments?.getString("addr"),
-                "num" to arguments?.getString("num"),
-                "spec" to arguments?.getString("spec"),
-                "jour" to date,
-                "hor" to plagehor
-            )
-
-            view?.findNavController()?.navigate(R.id.action_priseRdv_to_confirmationRdv, bundle)
+            if (hor != 0) {
+                var rdv = Rdv(hor, id, preferences?.getInt("patientId",0)!!, "confirmed", date)
+                addRDV(rdv,date,plagehor)
+            }
+            else{
+                Toast.makeText(requireActivity(), "Veuillez selectionner un creneau horraire", Toast.LENGTH_LONG).show()
+            }
 
         }
     }
-    private fun addRDV(rdv: Rdv){
+    private fun addRDV(rdv: Rdv,date:String,plagehor:String){
         val call = RetrofitService.endpoint.addRDV(rdv)
         call.enqueue(object : Callback<Rdv> {
             override fun onResponse(
@@ -125,8 +109,19 @@ class PriseRdv : Fragment() {
                     val data = response.body()
                     try {
                         if(data!=null){
-                            Toast.makeText(requireActivity(), data.toString(), Toast.LENGTH_LONG).show()
-                            imageView2.setImageBitmap(getQrCodeBitmap(data))
+                            Toast.makeText(requireActivity(), "Comfirmation avec succes !", Toast.LENGTH_LONG).show()
+
+                            val bundle = bundleOf(
+                                    "id" to arguments?.getInt("id"),
+                                    "nom" to arguments?.getString("nom"),
+                                    "addr" to arguments?.getString("addr"),
+                                    "num" to arguments?.getString("num"),
+                                    "spec" to arguments?.getString("spec"),
+                                    "jour" to date,
+                                    "hor" to plagehor
+                            )
+                            bundle.putParcelable("rdv",data)
+                            view?.findNavController()?.navigate(R.id.action_priseRdv_to_confirmationRdv, bundle)
                         }
                     }
                     catch (e:Exception){
@@ -150,19 +145,6 @@ class PriseRdv : Fragment() {
 
     }
 
-    fun getQrCodeBitmap(data:Rdv): Bitmap {
-        val qrCodeContent = "${data.id}:${data.plageHorraireId}:${data.medecinId}:${data.patientId}:${data.state}:${data.date}"
-        val hints = hashMapOf<EncodeHintType, Int>().also { it[EncodeHintType.MARGIN] = 1 } // Make the QR code buffer border narrower
-        val size = 512 //pixels
-        val bits = QRCodeWriter().encode(qrCodeContent, BarcodeFormat.QR_CODE, size, size, hints)
-        return Bitmap.createBitmap(size, size, Bitmap.Config.RGB_565).also {
-            for (x in 0 until size) {
-                for (y in 0 until size) {
-                    it.setPixel(x, y, if (bits[x, y]) Color.BLACK else Color.WHITE)
-                }
-            }
-        }
-    }
 
 
 

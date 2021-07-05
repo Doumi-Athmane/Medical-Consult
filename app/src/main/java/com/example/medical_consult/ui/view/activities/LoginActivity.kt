@@ -13,6 +13,7 @@ import com.example.medical_consult.data.api.RetrofitService
 import com.example.medical_consult.data.model.LoginRequest
 import com.example.medical_consult.data.model.LoginResponse
 import com.example.medical_consult.data.model.Medecin
+import com.example.medical_consult.data.model.User
 import com.example.medical_consult.ui.adapter.MedecinAdapter
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.fragment_liste_medecins.*
@@ -81,6 +82,7 @@ class LoginActivity : AppCompatActivity() {
     }
     fun switchToPatientActivity(){
         val intent = Intent(this, MainActivity::class.java)
+        setPatientCredentials()
         startActivity(intent)
         finish()
     }
@@ -89,4 +91,32 @@ class LoginActivity : AppCompatActivity() {
         startActivity(intent)
         finish()
     }
+
+    fun setPatientCredentials() {
+        var call = RetrofitService.endpoint.getPatientById(getContext().getInt("id",3))
+        call.enqueue(object : Callback<User> {
+            override fun onResponse(call: Call<User>?, response:Response<User>?) {
+                if (response?.isSuccessful!!) {
+                    val data: User? = response.body()
+                    if (data != null) {
+                        try {
+                            getContext().edit {
+                                putBoolean("connected", true)
+                                putInt("patientId", data.id)
+                                putString("fullName", data.fullName)
+                                putString("phone", data.phone)
+                                putString("email", data.email)
+                            }
+                        } catch (e: Exception) {
+                            Toast.makeText(this@LoginActivity, e.toString(), Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }
+            }
+            override fun onFailure(call: Call<User>?, t: Throwable?) {
+                Toast.makeText(this@LoginActivity,"fail request", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
 }

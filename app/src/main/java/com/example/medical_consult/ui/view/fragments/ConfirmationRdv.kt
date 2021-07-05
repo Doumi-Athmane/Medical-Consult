@@ -1,6 +1,9 @@
 package com.example.medical_consult.ui.view.fragments
 
+import android.graphics.Bitmap
+import android.graphics.Color
 import android.os.Bundle
+import android.os.Parcelable
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +13,9 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.medical_consult.R
 import com.example.medical_consult.data.model.Rdv
+import com.google.zxing.BarcodeFormat
+import com.google.zxing.EncodeHintType
+import com.google.zxing.qrcode.QRCodeWriter
 import kotlinx.android.synthetic.main.fragment_confirmation_rdv.*
 import kotlinx.android.synthetic.main.fragment_liste_medecins.*
 import kotlinx.android.synthetic.main.fragment_prise_rdv.*
@@ -28,7 +34,7 @@ class ConfirmationRdv : Fragment() {
     }
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-       // var qrgEncoder = QRGEncoder(inputValue, null, QRGContents.Type.TEXT, 1);
+        QR.setImageBitmap(getQrCodeBitmap(arguments?.getParcelable("rdv")))
         nommede.setText("Dr "+arguments?.getString("nom"))
         addd.setText(arguments?.getString("addr"))
         specc.setText(arguments?.getString("spec"))
@@ -47,6 +53,20 @@ class ConfirmationRdv : Fragment() {
 
         }
 
+    }
+
+    fun getQrCodeBitmap(data:Rdv?): Bitmap {
+        val qrCodeContent = "${data?.id}:${data?.plageHorraireId}:${data?.medecinId}:${data?.patientId}:${data?.state}:${data?.date}"
+        val hints = hashMapOf<EncodeHintType, Int>().also { it[EncodeHintType.MARGIN] = 1 } // Make the QR code buffer border narrower
+        val size = 512 //pixels
+        val bits = QRCodeWriter().encode(qrCodeContent, BarcodeFormat.QR_CODE, size, size, hints)
+        return Bitmap.createBitmap(size, size, Bitmap.Config.RGB_565).also {
+            for (x in 0 until size) {
+                for (y in 0 until size) {
+                    it.setPixel(x, y, if (bits[x, y]) Color.BLACK else Color.WHITE)
+                }
+            }
+        }
     }
 
 }
