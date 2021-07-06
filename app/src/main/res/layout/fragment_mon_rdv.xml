@@ -9,14 +9,14 @@
     tools:context=".ui.view.fragments.MonRdv">
 
     <ScrollView
-        android:layout_marginTop="50sp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center"
@@ -83,24 +83,25 @@
 
             <Button
                 android:id="@+id/appl"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="50dp"
                 android:text="Appler" />
 
             <Button
                 android:id="@+id/derc"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="Direction" />
 
             <Button
                 android:id="@+id/annulerRdv"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:background="#DF0B0B"
+                android:background="#D20F0F"
+                android:textColor="@color/white"
                 android:text=" Annuler le RDV" />
 
             <TextView
