@@ -86,7 +86,7 @@ class PriseRdv : Fragment() {
             val id = arguments?.getInt("id")!!
             val selectedDate:Long = jour.date
             calendar.timeInMillis = selectedDate
-            val dateFormatter = DateFormat.getDateInstance(DateFormat.SHORT)
+            val dateFormatter = DateFormat.getDateInstance(DateFormat.MEDIUM)
             var date = dateFormatter.format(calendar.time)
 
 
@@ -110,7 +110,7 @@ class PriseRdv : Fragment() {
                 if (response?.isSuccessful!!) {
                     val data = response.body()
                     try {
-                        if(data!=null){
+                        if(data!=null && data.date!=null){
                             Toast.makeText(requireActivity(), "Comfirmation avec succes !", Toast.LENGTH_LONG).show()
 
                             val bundle = bundleOf(
@@ -127,13 +127,13 @@ class PriseRdv : Fragment() {
                         }
                     }
                     catch (e:Exception){
-                        Toast.makeText(requireActivity()," Erreur voici le result ${data.toString()}", Toast.LENGTH_LONG).show()
+                        Toast.makeText(requireActivity(),"Creneau Horraire deja Pris", Toast.LENGTH_LONG).show()
                     }
 
                 } else {
                     Toast.makeText(
                         requireActivity(),
-                        "Erreur lors de la création",
+                        "Creneau Horraire deja Pris",
                         Toast.LENGTH_LONG
                     ).show()
                 }
@@ -141,7 +141,7 @@ class PriseRdv : Fragment() {
             }
 
             override fun onFailure(call: Call<Rdv>?, t: Throwable?) {
-                Toast.makeText(requireActivity(), t.toString(), Toast.LENGTH_LONG).show()
+                Toast.makeText(requireActivity(), "Creneau Horraire deja Pris", Toast.LENGTH_LONG).show()
             }
         })
 
