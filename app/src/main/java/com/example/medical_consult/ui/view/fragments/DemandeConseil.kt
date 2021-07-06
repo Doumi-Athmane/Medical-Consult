@@ -51,8 +51,6 @@ class DemandeConseil : Fragment() {
                 if (response?.isSuccessful!!) {
                     val data = response.body()
 
-
-                    Toast.makeText(requireActivity(), ""+con, Toast.LENGTH_LONG).show()
                 } else {
                     Toast.makeText(
                         requireActivity(),

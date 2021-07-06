@@ -105,7 +105,7 @@
     <fragment
         android:id="@+id/monTraitement"
         android:name="com.example.medical_consult.ui.view.fragments.monTraitement"
-        android:label="fragment_mon_traitement"
+        android:label="Mon traitement"
         tools:layout="@layout/fragment_mon_traitement" >
         <action
             android:id="@+id/action_monTraitement_to_demandeConseil"
