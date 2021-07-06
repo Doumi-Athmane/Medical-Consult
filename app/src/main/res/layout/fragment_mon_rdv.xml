@@ -83,20 +83,6 @@
                 android:textSize="18sp" />
 
             <Button
-                android:id="@+id/appl"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
-                android:text="Appler" />
-
-            <Button
-                android:id="@+id/derc"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="Direction" />
-
-            <Button
                 android:id="@+id/annulerRdv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
